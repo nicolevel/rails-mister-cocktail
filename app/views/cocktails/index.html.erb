@@ -1,30 +1,36 @@
 
 
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://picsum.photos/1300/350');">
+<div class="banner" style="background-position: top; background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path 'banner.jpg'%>');">
   <div class="banner-content">
     <h1>Nicole's Cocktails</h1>
+    <hr>
     <h4>Awesome recipes for awesome people!</h4>
-    <a class="btn btn-primary btn-lg"><%= link_to 'Add new cocktail', new_cocktail_path %></a>
+      <%= link_to 'Add new cocktail', new_cocktail_path, class: "btn btn-ouline-primary" %>
   </div>
 </div>
 
 <div class="container-fluid" >
-  <div class="row" style="margin-top:10px;">
+  <div class="row">
     <% @cocktails.each do |cocktail| %>
 
     <div class="col-xs-12 col-sm-4">
       <% if cocktail.photo.present? %>
-         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill %>')">
+         <div class="card" style="margin-top: 10px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill %>')">
           <% else %>
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/350/300')">
+          <div class="card" style="margin-top: 10px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/350/300')">
       <% end %>
 
         <div class="card-description">
-          <h2><li><%= link_to cocktail.name, cocktail_path(cocktail) %></li></h2>
+          <h2><%= link_to cocktail.name.capitalize, cocktail_path(cocktail) %></h2>
         </div>
       </div>
     </div>
     <% end %>
   </div>
+</div>
 
+<div class="footer">
+  <div class="footer-copyright text-center py-3">© 2018 Copyright: Nicole Velasco
+     <i class="fas fa-glass-martini"></i>
+   </div>
 </div>
