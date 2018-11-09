@@ -1,7 +1,7 @@
-<%= simple_form_for @cocktails do |c| %>
-  <%= c.input :name %>
-  <hr>
+<%= simple_form_for @cocktails do |f| %>
+  <%= f.input :name %>
   <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden %>
-  <%= c.button :submit %>
+  <hr>
+  <%= f.button :submit %>
 <% end %>
